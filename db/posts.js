@@ -1,6 +1,6 @@
 let posts = [
   {
-    id: "1",
+    id: 1,
     titolo: "Ciambellone",
     contenuto: "Ricetta ciambellone",
     immagine: "/images/ciambellone.jpg",
@@ -8,7 +8,7 @@ let posts = [
   },
 
   {
-    id: "2",
+    id: 2,
     titolo: "Cracker alla barbabietola",
     contenuto: "Ricetta cracker alla barbabietola",
     immagine: "/images/cracker_barbabietola.jpg",
@@ -16,7 +16,7 @@ let posts = [
   },
 
   {
-    id: "3",
+    id: 3,
     titolo: "Pane fritto dolce",
     contenuto: "Ricetta Pane fritto dolce",
     immagine: "/images/pane_fritto_dolce.jpg",
@@ -24,7 +24,7 @@ let posts = [
   },
 
   {
-    id: "4",
+    id: 4,
     titolo: "Pasta alla barbabietola",
     contenuto: "Ricetta Pasta alla barbabietola",
     immagine: "/images/pasta_barbabietola.jpg",
@@ -32,7 +32,7 @@ let posts = [
   },
 
   {
-    id: "5",
+    id: 5,
     titolo: "Torta paesana",
     contenuto: "Ricetta torta paesana",
     immagine: "/images/torta_paesana.jpg",
