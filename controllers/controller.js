@@ -9,19 +9,60 @@ function index(req, res) {
 /** SHOW */
 function show(req, res) {
   const id = parseInt(req.params.id);
-  const postCercato = posts.find((post) => post.id == id);
+  const postCercato = posts.find((post) => post.id === id);
+
+  if (!postCercato) {
+    return res.status(404).json("Post not found");
+  }
+
   res.json(postCercato);
 }
 
 /** STORE */
 function store(req, res) {
-  res.json("Crea un nuovo post");
+  const id = posts.at(-1).id + 1;
+  const { titolo, contenuto, immagine, tag } = req.body;
+
+  if (!titolo || !contenuto || !tag) {
+    return res.status(400).json({ error: "Invalid params" });
+  }
+
+  const newPost = {
+    id,
+    titolo,
+    contenuto,
+    immagine,
+    tag,
+  };
+
+  posts.push(newPost);
+  console.log(posts);
+
+  res.status(201);
+  res.json(posts);
 }
 
 /** UPDATE */
 function update(req, res) {
-  const { id } = req.params;
-  res.json(`Modifica interamente i dettagli del post con id: ${id}`);
+  const id = parseInt(req.params.id);
+  let post = posts.find((post) => post.id === id);
+
+  if (!post) {
+    return res.status(404).json({ error: "Post Not Found" });
+  }
+
+  const { titolo, contenuto, immagine, tag } = req.body;
+
+  if (!titolo || !contenuto || !tag) {
+    return res.status(400).json({ error: "Invalid params" });
+  }
+
+  post.titolo = titolo;
+  post.contenuto = contenuto;
+  post.immagine = immagine;
+  post.tag = tag;
+
+  res.json(posts);
 }
 
 /** MODIFY */
@@ -34,7 +75,7 @@ function modify(req, res) {
 function destroy(req, res) {
   const id = parseInt(req.params.id);
 
-  const postCercato = posts.find((post) => post.id == id);
+  const postCercato = posts.find((post) => post.id === id);
 
   if (!postCercato) {
     res.status(404);
