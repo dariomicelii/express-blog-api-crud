@@ -1,4 +1,5 @@
 const posts = require("../db/posts");
+const { post } = require("../routers/posts");
 
 /** INDEX */
 function index(req, res) {
@@ -8,7 +9,7 @@ function index(req, res) {
 /** SHOW */
 function show(req, res) {
   const id = parseInt(req.params.id);
-  const postCercato = posts.find((post) => post.id === id);
+  const postCercato = posts.find((post) => post.id == id);
   res.json(postCercato);
 }
 
@@ -32,7 +33,8 @@ function modify(req, res) {
 /** DESTROY */
 function destroy(req, res) {
   const id = parseInt(req.params.id);
-  const postCercato = posts.find((post) => post.id === id);
+
+  const postCercato = posts.find((post) => post.id == id);
 
   if (!postCercato) {
     res.status(404);
@@ -43,7 +45,7 @@ function destroy(req, res) {
     });
   }
   posts.splice(posts.indexOf(postCercato), 1);
-  res.sendStatus(204);
+  res.json(posts);
 }
 
 module.exports = { index, show, store, update, modify, destroy };
