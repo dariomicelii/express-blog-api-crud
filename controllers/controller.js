@@ -7,7 +7,10 @@ function index(req, res) {
 }
 
 /** SHOW */
+
 function show(req, res) {
+  pippo.getData(); //* errore logico per provare errorsHandler
+
   const id = parseInt(req.params.id);
   const postCercato = posts.find((post) => post.id === id);
 
