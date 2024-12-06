@@ -4,10 +4,10 @@ const app = express();
 const port = 3000;
 
 // REGISTERING HANDLERS
+app.use(cors());
 const errorsHandler = require("./middlewares/errorsHandler.js");
 const notFound = require("./middlewares/notFound.js");
 
-app.use(cors());
 app.use(express.static("public"));
 app.use(express.json());
 // REGISTERING ROUTES
