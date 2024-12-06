@@ -24,18 +24,18 @@ function show(req, res) {
 /** STORE */
 function store(req, res) {
   const id = posts.at(-1).id + 1;
-  const { titolo, contenuto, immagine, tag } = req.body;
+  const { title, content, image, category } = req.body;
 
-  if (!titolo || !contenuto || !tag) {
+  if (!title || !content || !category) {
     return res.status(400).json({ error: "Invalid params" });
   }
 
   const newPost = {
     id,
-    titolo,
-    contenuto,
-    immagine,
-    tag,
+    title,
+    content,
+    image,
+    category,
   };
 
   posts.push(newPost);
@@ -54,16 +54,17 @@ function update(req, res) {
     return res.status(404).json({ error: "Post Not Found" });
   }
 
-  const { titolo, contenuto, immagine, tag } = req.body;
+  const { title, content, image, category } = req.body;
 
-  if (!titolo || !contenuto || !tag) {
+  if (!title || !content || !category) {
     return res.status(400).json({ error: "Invalid params" });
   }
 
-  post.titolo = titolo;
-  post.contenuto = contenuto;
-  post.immagine = immagine;
-  post.tag = tag;
+  post.id = id;
+  post.title = title;
+  post.content = content;
+  post.image = image;
+  post.category = category;
 
   res.json(posts);
 }
